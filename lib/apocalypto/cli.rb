@@ -58,31 +58,6 @@ class ApocalyptoApp::CLI
         user.player_stats
     end
 
-    def access_shop
-        system("clear")
-        puts "Food:"
-        shop.food.each.with_index(1) do |food, i|
-            puts "#{i}. #{food}"
-        end
-        new_line
-        divider
-        puts "Armour:"
-        shop.armour.each.with_index(11) do |armour, i|
-            puts "#{i}. #{armour}"
-        end
-        new_line
-        divider
-        puts "Weapons:"
-        shop.weapons.each.with_index(21) do |weapon, i|
-            puts "#{i}. #{weapon}"
-        end
-    end
-
-    def zombie_total
-        zombies.times {|i| Zombie.new i}
-        puts "There are currently #{zombies} zombies plaguing the lands."
-    end
-
     def exit
         puts "Enter any key to escape the apocalypse."
     end
