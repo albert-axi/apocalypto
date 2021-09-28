@@ -9,16 +9,21 @@ class ApocalyptoApp::CLI
         divider
         puts "It's the end of days. A plague has taken over the world, turning people into vicious, flesh eating zombies. The world as you know it is over. You job now? Survive."
         new_line
-        puts "Input [start] to begin"
-        exit
+        puts "Input your name to begin"
+        puts "Enter [exit] to escape the apocalypse."
 
         input = gets.strip.downcase
-        input == "start" ? list_countries : exit
+        if input == "exit"
+            exit
+        elsif
+            user = User.new input
+            list_countries
+        end
     end
 
     def list_countries
         system("clear")
-        "Choose your starting area:"
+        puts "Choose your starting area:"
         new_line
         divider
         country.each.with_index(1) do |country, i|
@@ -49,40 +54,67 @@ class ApocalyptoApp::CLI
 
     def selected_area input
         selection = country.[input - 1]
-        puts "Welcome to #{selection.name}."
+        zombies = selection.quantity
+        puts "Welcome #{user.name} to #{selection.name}."
         zombie_total
+        divider
         player_stats
     end
 
     def player_stats
-        if user.food < 3 || user.armour < 1 || user.weapons < 1
+        if user.health < 3 || user.armour < 1 || user.damage < 1
             puts "Uh oh - looks like you're low on supplies."
+            current_supply
             puts "Input [shop] to stock up."
             exit
             input = gets.strip.downcase
             input == "shop" ? access_shop : exit
         elsif
-            puts "You're ready for battle! ALONZEE"
+            current_supply
+            puts "You're ready for battle, #{user.name}! ALONZEE"
             puts "Input [fight] to start a battle."
             exit
-
             input = gets.strip.downcase
             input == "fight" ? spawn_zombie : exit
         end
     end
 
+    def current_supply
+        puts "You currently have #{user.health} health, #{user.armour} armour and #{user.damage} damage."
+    end
+
     def access_shop
+        system("clear")
+        puts "Food:"
+        shop.food.each.with_index(1) do |food, i|
+            puts "#{i}. #{food}"
+        end
+        new_line
+        divider
+        puts "Armour:"
+        shop.armour.each.with_index(11) do |armour, i|
+            puts "#{i}. #{armour}"
+        end
+        new_line
+        divider
+        puts "Weapons:"
+        shop.weapons.each.with_index(21) do |weapon, i|
+            puts "#{i}. #{weapon}"
+        end
     end
 
     def spawn_zombie
+        if Zombie.all.count == 1
+        puts "A wild zombie appears! Quick attack it with your "
     end
 
     def zombie_total
-        puts "There are currently #{selection.quantity} zombies."
+        zombies.times {|i| Zombie.new i}
+        puts "There are currently #{zombies} zombies plaguing the lands."
     end
 
     def exit
-        puts "Enter any key to exit."
+        puts "Enter any key to escape the apocalypse."
     end
 
     def country
