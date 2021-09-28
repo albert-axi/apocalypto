@@ -1,0 +1,3 @@
+class ApocalyptoApp::Shop
+
+end

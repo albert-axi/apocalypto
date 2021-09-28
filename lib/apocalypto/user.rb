@@ -1,0 +1,2 @@
+class ApocalyptoApp::User
+end

@@ -53,10 +53,7 @@ class ApocalyptoApp::CLI
     end
 
     def selected_area input
-        selection = country.[input - 1]
-        zombies = selection.quantity
-        puts "Welcome #{user.name} to #{selection.name}."
-        zombie_total
+        country.[input - 1].print
         divider
         player_stats
     end
@@ -103,11 +100,6 @@ class ApocalyptoApp::CLI
         end
     end
 
-    def spawn_zombie
-        if Zombie.all.count == 1
-        puts "A wild zombie appears! Quick attack it with your "
-    end
-
     def zombie_total
         zombies.times {|i| Zombie.new i}
         puts "There are currently #{zombies} zombies plaguing the lands."
@@ -119,26 +111,6 @@ class ApocalyptoApp::CLI
 
     def country
         ApocalyptoApp::Country.all
-    end
-
-    def new_line
-        puts ""
-    end
-
-    def divider
-        puts "══════════ ∘◦ ❈ ◦∘ ══════════"
-    end
-
-    def zombie
-        puts "‿︵‿︵(ಥ﹏ಥ)‿︵‿︵"
-    end
-
-    def oh_no
-        puts "ᵒʰ(⑉・̆⌓・̆⑉)ɴᴏ"
-    end
-
-    def hit
-        puts "(ﾉ>｡☆)ﾉ"
     end
 end
 
