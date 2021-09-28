@@ -55,29 +55,7 @@ class ApocalyptoApp::CLI
     def selected_area input
         country.[input - 1].print
         divider
-        player_stats
-    end
-
-    def player_stats
-        if user.health < 3 || user.armour < 1 || user.damage < 1
-            puts "Uh oh - looks like you're low on supplies."
-            current_supply
-            puts "Input [shop] to stock up."
-            exit
-            input = gets.strip.downcase
-            input == "shop" ? access_shop : exit
-        elsif
-            current_supply
-            puts "You're ready for battle, #{user.name}! ALONZEE"
-            puts "Input [fight] to start a battle."
-            exit
-            input = gets.strip.downcase
-            input == "fight" ? spawn_zombie : exit
-        end
-    end
-
-    def current_supply
-        puts "You currently have #{user.health} health, #{user.armour} armour and #{user.damage} damage."
+        user.player_stats
     end
 
     def access_shop
@@ -113,5 +91,3 @@ class ApocalyptoApp::CLI
         ApocalyptoApp::Country.all
     end
 end
-
-loading = ●・○・●

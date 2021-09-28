@@ -24,4 +24,6 @@ module ApocalyptoApp
     def hit
         puts "(ﾉ>｡☆)ﾉ"
     end
+
+    loading = ●・○・●
 end
