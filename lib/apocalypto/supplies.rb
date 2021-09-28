@@ -1,2 +1,2 @@
-class Apocalypto::Supplies
+class ApocalyptoApp::Supplies
 end

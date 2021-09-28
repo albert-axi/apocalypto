@@ -4,6 +4,6 @@ require_relative './apocalypto/supplies.rb'
 require_relative './apocalypto/scraper.rb'
 require_relative './apocalypto/cli.rb'
 
-module Apocalypto
+module ApocalyptoApp
 
 end
