@@ -58,10 +58,6 @@ class ApocalyptoApp::CLI
         user.player_stats
     end
 
-    def exit
-        puts "Enter any key to escape the apocalypse."
-    end
-
     def country
         ApocalyptoApp::Country.all
     end

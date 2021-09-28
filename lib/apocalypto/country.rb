@@ -6,8 +6,9 @@ class ApocalyptoApp::Country
     def initialize name:, zombies:
         @name = name
         @zombies = zombies
-
         @@all << self
+        
+        zombies.times {|i| Zombie.new id: i}
     end
 
     def self.all
@@ -22,7 +23,8 @@ class ApocalyptoApp::Country
     end
 
     def spawn_zombie
-        if Zombie.all.count == 1
+        if Zombie.all.count == 1 
+        zombie
         puts "A wild zombie appears! Quick attack it with your "
     end
 end

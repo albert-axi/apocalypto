@@ -5,6 +5,10 @@ require_relative './apocalypto/scraper.rb'
 require_relative './apocalypto/cli.rb'
 
 module ApocalyptoApp
+    def exit
+        puts "Enter any key to escape the apocalypse."
+    end
+    
     def new_line
         puts ""
     end
