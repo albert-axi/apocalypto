@@ -9,6 +9,7 @@ Gem::Specification.new do |s|
       "lib/supplies.rb",
       "lib/scraper.rb"
     ]
+    s.executables << 'apocalypto_app'
     s.homepage    =
       'https://rubygems.org/gems/apocalypto'
     s.license       = 'MIT'

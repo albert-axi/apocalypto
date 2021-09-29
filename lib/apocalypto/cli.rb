@@ -1,6 +1,7 @@
 class ApocalyptoApp::CLI
     def initialize
-        ApocalyptoApp::Scraper.new.get_locations
+        ApocalyptoApp::Scraper.new.get_countries
+        ApocalyptoApp::Scraper.new.get_supplies
     end
 
     def start
@@ -47,7 +48,7 @@ class ApocalyptoApp::CLI
         if input > country.size
             puts "Invalid selection: No country exists."
             puts "Please input a valid number."
-            get_user_input
+            return get_user_input
         end
         input
     end
