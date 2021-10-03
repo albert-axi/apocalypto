@@ -16,10 +16,10 @@ class ApocalyptoApp::Fight
 
     def self.attack
         new_line
-        puts "Input [hit] to attack the zombie."
+        puts "Press [Enter] to attack the zombie."
         puts "Input [run] to run away."
         input = gets.strip.downcase
-        input == "hit" ? hit : current_game.player_stats
+        input == "run" ? current_game.player_stats : hit  
     end
 
     def self.hit
@@ -41,11 +41,12 @@ class ApocalyptoApp::Fight
 
     def self.defeat_zombie
         player.money += current_zombie.money
-        current_zombie.class.all.delete_if { |z| z == current_zombie }
         add_random_drop
         new_line
         dead_zombie
         puts "You defeated the zombie and gained $#{current_zombie.money}!"
+        # current_zombie.class.all.delete_if { |z| z == current_zombie }
+        current_zombie.class.all.shift
         current_game.fight_shop_exit
     end
 
@@ -58,8 +59,8 @@ class ApocalyptoApp::Fight
         case rand(1..30)
         when 1, 3, 8, 21, 30
             all_supplies.filter{ |item| item.type == "health" }.sample
-        when 9
-            all_supplies.sample
+        # when 9
+        #     all_supplies.sample
         end
     end
 
